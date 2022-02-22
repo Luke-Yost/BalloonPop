@@ -8,3 +8,7 @@ background-color: aqua;
     background-color:red;
     border-radius: 65%;
 }
+
+button{
+    margin: 5px;
+}

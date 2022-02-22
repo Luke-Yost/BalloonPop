@@ -89,7 +89,8 @@ function stopGame(){
 
 // #endregion 
 
-let players = [{},{}]
+let players = []
+loadPlayers()
 
 function setPlayer(event){
     event.preventDefault()
@@ -102,10 +103,23 @@ function setPlayer(event){
 
     if(!currentPlayer) {
         currentPlayer= {name: playerName, topScore: 0}
+        players.push(currentPlayer)
+        savePlayers()
     }
 
     console.log(currentPlayer)
 
     form.reset()
+}
 
+function savePlayers(){
+window.localStorage.setItem("players", JSON.stringify(players))
+} 
+
+function loadPlayers(){
+    let playerData = JSON.parse(window.localStorage.getItem("players"))
+
+    if(playerData){
+        players = playerData
+    }
 }
