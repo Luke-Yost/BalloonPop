@@ -1,49 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Balloon Pop</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
 
 
 <body>
 
-    <form onsubmit="setPlayer(event)">
-<div>
-<label for="name">Player Name:</label>
-<input type="text" name="playerName" required>
-</div>
-<button type="submit">OK</button>
-    </form>
 
-    <div>
-<button id="start-button" onclick="startGame()">START GAME</button>
+    <header>
+        <div class="container shadow">
+            <img src="download.png" alt="ballon pop logo">
+        </div>
+    </header>
 
+
+    <main class="container card">
+
+        <form class="d-flex" id="player-form" onsubmit="setPlayer(event)">
+            <div>
+                <label for="name">
+                    <i class="fa fa-user-circle" aria-hidden="true"></i>
+                    <span>Player Name:</span>
+                </label>
+                <input type="text" name="playerName" required>
+            </div>
+            <button type="submit">OK</button>
+        </form>
+
+        <section id="game" class="game hidden ">
+
+            <div class="card ">
+                <div class="d-flex space-between">
+                    <div>
+                        <i class="fa fa-user-circle" aria-hidden="true"></i>
+                        <span id="player-name"></span>
+                    </div>
+                    <div>
+                        <span>Top Popped</span>
+                        <span id="highest-pop-count"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="main-controls" class="d-flex space-around mt-2">
+                <button id="start-button" onclick="startGame()">START GAME</button>
+                <button id="player-form" onclick="changePlayer()">Change Player</button>
+            </div>
+        
+            <div id="game-controls" class="hidden">
+                <div class="mt-1">
+                    <span>Balloons Popped</span>
+                    <span id="pop-count"></span>
+                </div>
+                <!-- todo change mt-2 to a lesser value to format time remaining a bit closer to balloons popped -->
+                <div class="mt-2">
+                    <span>Time Remaining:</span>
+                    <span id="countdown">0</span>
+                </div>
+               
+                <div class="game-container d-flex">
+                    <div class="pump" onclick="inflate()">
+                     <div class="handle"  ></div>
+                     <div class="pump-box"> <span id="click-count"></span></div>
+                    </div>
+                    <div id="balloon" class="balloon"></div>
+                    <audio id="pop-sound" src="burst.mp3"></audio>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="scoreboard" class="container card2 mt-1">
+        <h3 class="text-center">scoreboard</h3>
+        <div id="players"></div>
+       
+       
     </div>
-   
-    <button id="inflate-button" onclick="inflate()" disabled = "true">
-        Inflate 
-        <span id = "click-count"></span>
-    </button>
-    <div>
-        <span>Balloons Popped</span>
-        <span id="pop-count"></span>
-    </div>
-    <div>
-        <span>Top Amount Popped</span>
-        <span id="highest-pop-count"></span>
-    </div> 
-    <div>
-        <span>Time Remaining:</span>
-        <span id="countdown">0</span>
-    </div>
-    <div id="balloon" class="balloon"></div>
-      
-   
-   <script src="main.js"></script>
+
+    <script src="main.js"></script>
 
 </body>
 

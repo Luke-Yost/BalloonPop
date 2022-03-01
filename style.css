@@ -1,14 +1,217 @@
+:root{
+    --primary: #ff0000;
+    --bg: rgb(112 104 104 / 56%);
+    --shadow:2px 0 8px rgba(0,0,0,.3);
+    --corners: 6px; 
+    --text-color1:rgb(171 47 47);
+    --text-color2:#d8c9c9;
+    --card-bg:rgb(0 0 27 / 60%);
+    --card-bg2:#1c1b32
+}
+
 body{
-background-color: aqua;
+background-color: var(--bg);
+font-family: 'Bangers', cursive;
+font-size: 16pt;
+color: var(--text-color1);
+}
+
+header{
+    margin: 1em 0;
+}
+
+
+img{
+    max-width: 100%;
+}
+
+form{
+    margin: 0;
+}
+
+input{
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid var(--text-color1);
+    outline: none;
+    font-size: 14pt;
+    font-family: 'Bangers', cursive;
+    color: var(--text-color2);
+
+}
+
+.game-container{
+height: 300px;
+}
+
+.pump{
+    margin-top: 80px;
+    height: 130px;
+    width: 180px;
+    position: relative;
+    font-size: 30pt;
+    align-self: flex-end;
+}
+
+.handle{
+    height: 10px;
+    width: 80px;
+    background-color:var(--card-bg2) ;
+    position: absolute;
+    top: -80px;
+    left: 50px;
+    display: flex;
+    justify-content: center;
+    transition: all .05s linear;
+    z-index: 1;
+}
+
+.handle::before{
+    content:"";
+    background-color: var(--card-bg2);
+    width: 10px;
+    height: 80px;
+    display: block;
+}
+
+.pump:active .handle{
+    top: -20px;
+}
+
+.pump-box{
+background-color: var(--text-color1);  
+height: 130px;
+width: 180px;
+border-radius: 20px;
+z-index: 2; 
+position: absolute; 
+color: var(--card-bg2);
+display: flex;
+align-items: center;
+justify-content: center;
+user-select: none;
 }
 
 .balloon{
     height: 130px;
-    width: 110px;
-    background-color:red;
+    width: 100px;
+    background-color: #0000ff;
     border-radius: 65%;
+    transition: all .2 ease;
+    animation: balloon-float 4s ease-in-out infinite;
+    align-self: flex-end;
+    margin: 0 auto;
+    box-shadow: inset -10px -10px 12px rgba(0,0,0,.4);
 }
 
-button{
-    margin: 5px;
+.balloon.green{
+    background-color:  #0f0 ;
 }
+
+.balloon.yellow{
+    background-color:  #ffff53 ;
+}
+
+.balloon.red{
+    background-color: #ff0000 ;
+}
+
+@keyframes balloon-float{
+0%,100%{
+    transform: translateY(-25px) rotate(5deg);
+}
+50%{
+    transform: translateY(0px) rotate(-5deg);
+}
+}
+
+.container{
+    width: 70%;
+    margin: auto;
+}
+
+@media  screen and(max-width: 700px) {
+    .container{
+        width: 90%;
+    }
+}
+
+.card{
+    background-color:var(--card-bg);
+    padding: 1em;
+    box-shadow: var(--shadow);
+    border-radius: var(--corners) ;
+    color: var(--text-color1);
+}
+
+.card2{
+    background-color:var(--card-bg2);
+    padding: 1em;
+    box-shadow: var(--shadow);
+    border-radius: var(--corners) ;
+    color: var(--text-color1);
+}
+
+.shadow{
+    filter: drop-shadow(var(--shadow));
+}
+
+.d-flex{
+    display: flex;
+    align-items: center;
+    }
+   
+ .d-flex.space-between{
+        justify-content: space-between;
+      } 
+
+ .d-flex.space-around{
+     justify-content: space-around;
+ }     
+
+ .mt-1{
+    margin-top: .5em;
+}
+.mt-2{
+    margin-top: 1em;
+}
+.mt-3{
+    margin-top: 1.5em;
+}
+.mb-1{
+    margin-bottom: .5em;
+}
+.mb-2{
+    margin-bottom: 1em;
+}
+.mb-3{
+    margin-bottom: 1.5em;
+}
+
+.text-center{
+    text-align: center;
+}
+
+.hidden{
+    display: none !important ;
+}
+
+    button{
+    margin: 5px;
+    font-family: 'Bangers', cursive;
+    color: var(--text-color2);
+    background-color: var(--bg);
+    box-shadow: var(--shadow);
+    transition: all .2 ease;
+    cursor: pointer;
+    padding: .65em;
+    
+   
+    border-radius: var(--corners);
+    }
+
+    button:hover{
+        background-color: var(--card-bg2);
+    }
+
+   
